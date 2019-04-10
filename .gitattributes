@@ -1,0 +1,6 @@
+# Default behavior
+* text=auto
+
+# Text files
+*.php text
+*.md text

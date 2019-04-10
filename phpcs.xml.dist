@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<ruleset name="Data Store">
+	<description>The custom ruleset for Data Store plugin.</description>
+
+	<!-- For help in understanding this file: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
+	<!-- For help in using PHPCS: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage -->
+
+	<!-- What to scan -->
+	<file>.</file>
+	<!-- Ignoring Files and Folders: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-files-and-folders -->
+	<exclude-pattern>/vendor/</exclude-pattern>
+
+	<!-- How to scan -->
+	<arg value="sp"/> <!-- Show sniff and progress -->
+	<arg name="colors"/> <!-- Show results with colors -->
+	<arg name="basepath" value="."/> <!-- Strip the file paths down to the relevant bit -->
+	<arg name="parallel" value="50"/> <!-- Enables parallel processing when available for faster results. -->
+	<arg name="extensions" value="php"/> <!-- Limit to PHP files -->
+
+	<!-- Rules: Check PHP version compatibility - see https://github.com/PHPCompatibility/PHPCompatibilityWP -->
+	<rule ref="PHPCompatibilityWP">
+		<exclude-pattern>tests</exclude-pattern>
+	</rule>
+	<!-- For help in understanding this testVersion: https://github.com/PHPCompatibility/PHPCompatibility#sniffing-your-code-for-compatibility-with-specific-php-versions -->
+	<config name="testVersion" value="5.6-"/>
+
+	<!-- Rules: WordPress Coding Standards - see https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards -->
+	<config name="minimum_supported_wp_version" value="5.0"/>
+	<!-- For help in understanding this custom sniff properties: https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties -->
+	<rule ref="WordPress"/>
+
+    <!-- Exclude tests from the filenaming sniffers.
+        We are following WordPress Handbook https://make.wordpress.org/core/handbook/testing/automated-testing/writing-phpunit-tests/#test-classes;
+        yet WPCS currently does not recognize the tests file and class naming convention. -->
+	<rule ref="WordPress.Files.FileName.NotHyphenatedLowercase">
+		<exclude-pattern>/tests/</exclude-pattern>
+	</rule>
+	<rule ref="WordPress.Files.FileName.InvalidClassFileName">
+		<exclude-pattern>/tests/</exclude-pattern>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.ValidVariableName">
+		<properties>
+			<property name="customPropertiesWhitelist" value="childNodes,tagName,textContent,parentNode,nodeType,nodeName,nextSibling,firstChild,lastChild,nodeValue,DEFAULT_ARGS,documentElement,removeChild,ownerDocument,DEFAULT_WIDTH,DEFAULT_HEIGHT" />
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="data-store"/>
+			</property>
+		</properties>
+	</rule>
+</ruleset>
