@@ -2,7 +2,7 @@
 /**
  * Data Store for centralized, globally available, persistent data, state, and configuration parameters.
  *
- * @package      KnowTheCode\Static_Class
+ * @package      KnowTheCode\Data_Store
  * @author       hellofromTonya
  * @license      GPL-3.0+
  *
@@ -21,5 +21,5 @@
  * Requires WP:       5.0
  */
 
-namespace KnowTheCode\Static_Class;
+namespace KnowTheCode\Data_Store;
 
