@@ -23,6 +23,7 @@ Attributes:
 - Bond to one item
 - Readable and understandable
 - Items are discoverable - query or filter by the naming convention
+- Will be held in memory.
 
 Naming convention for our identifiers:
 
@@ -42,3 +43,25 @@ Examples:
 - Help CPT: `'config.post_type.help'`
 - Catalog Tax: `'config.tax.catalog'`
 - Skills Tax: `'config.tax.skills'`
+
+### Container of Items
+
+The container will have the following attributes:
+- It's a container - holds the items that have been stored.
+- Data agnostic, any kind of data can be stored.
+- Identify (key) each item in the container/store.
+- Held in memory.
+- Retain the items in the container (so the items can be accessed later).
+
+It will use the [PHP Array Data Type](https://knowthecode.io/docx/php/array).
+
+The container could be:
+- ~~JSON file~~ - excluded due to performance
+- ~~database~~~ - excluded due to performance
+- ~~in-memory cache - Redis~~ - excluded due to unknown server setup.
+- in-memory using a PHP array data type
+
+Ways to retain the items in the container:
+- Procedural: `static $container = [];`
+- Static Class:  property: `static $container = [];` (visibility `private`)
+- OOP: property: `private $container = [];`
