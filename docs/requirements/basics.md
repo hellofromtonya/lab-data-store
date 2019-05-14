@@ -15,3 +15,30 @@ This is the interface of how to interact with the data store:
 - Retain the items in the container (so the items can be accessed later).
 - Data agnostic, any kind of data can be stored.
 - Identify each item in the container/store.
+
+### Item Identifier
+
+Attributes:
+- Unique (cannot be repeated)
+- Bond to one item
+- Readable and understandable
+- Items are discoverable - query or filter by the naming convention
+
+Naming convention for our identifiers:
+
+`[item type].[subtytpe].[name_or_slug]`
+
+- item type: examples: config, object (post, query), user info
+- subtype:
+	- config: post_type, tax, shortcode, template, query
+- name_or_slug
+	- examples: name of the CPT or Tax, shortcode name, etc.
+
+Examples:
+- Theme Settings: `'config.theme.settings'`
+- Lab CPT: `'config.post_type.lab'`
+- Docx CPT: `'config.post_type.docx'`
+- Glossary CPT: `'config.post_type.glossary'`
+- Help CPT: `'config.post_type.help'`
+- Catalog Tax: `'config.tax.catalog'`
+- Skills Tax: `'config.tax.skills'`
