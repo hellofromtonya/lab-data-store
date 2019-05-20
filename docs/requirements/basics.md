@@ -24,6 +24,14 @@ This is the interface of how to interact with the data store:
 - Replace a specific item (by store key) in the store: `replace`.
 	- If the item exists in the store, replaces the item and returns `true`.
 	- If the item does not exist in the store, add the item into the store and returns `true`, i.e. `return add(key, item)`
+- Merge the given array with the specified item array (by store) key: `merge`, `add_to`
+	- Check if specified item exists in the store (`has`):
+		- If no, return `false`.
+		- If yes, go to the next check.
+	- Restricted to arrays only.
+		- Check if the given item is an array and the existing item is also an array.
+		- If either is not, return `false`. (Bail out)
+	- Use native built-in PHP functionality to deeply merge the arrays together.  Then return `true`.	
 
 ## Internal Functionality and Attributes
 
