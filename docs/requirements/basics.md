@@ -31,7 +31,11 @@ This is the interface of how to interact with the data store:
 	- Restricted to arrays only.
 		- Check if the given item is an array and the existing item is also an array.
 		- If either is not, return `false`. (Bail out)
-	- Use native built-in PHP functionality to deeply merge the arrays together.  Then return `true`.	
+	- Use native built-in PHP functionality to deeply merge the arrays together.  Then return `true`.
+- Empty all items currently stored in the store: `empty`.
+	- Caution: deletes all items in the store. Use with care.
+	- Handy in tests suite, i.e. clean up after each test.
+	- Releases memory for performance and optimization.	
 
 ## Internal Functionality and Attributes
 
